@@ -2,34 +2,27 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-
-
 public class Main {
-     public static void main(String[] args) throws IOException {
-        
-        int[] arr = new int[26];
+        public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String s = br.readLine().toUpperCase();
-        char[] cArr = s.toCharArray();
-
-        for (char c : cArr) {
+        char[] chArr = br.readLine().toUpperCase().toCharArray();
+        int[] arr = new int[26];
+        for (char c : chArr) {
             arr[c - 65]++;
         }
 
-        int max = 0;
-        int second = 0;
-        char result = ' ';
+        int max = Integer.MIN_VALUE;
+        int c = '?';
 
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > max) {
-                result = (char) (i + 65);
+            if (max < arr[i]) {
                 max = arr[i];
-            } else if (arr[i] > second) {
-                second = arr[i];
+                c = i + 65;
+            } else if (max == arr[i]) {
+                c = '?';
             }
         }
-
-        if (max == second) System.out.println('?');
-        else System.out.println(result);
+        System.out.print((char)c);
     }
+
 }
