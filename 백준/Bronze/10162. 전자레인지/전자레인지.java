@@ -21,6 +21,6 @@ public class Main {
             t = t % 10;
         }
         if (t != 0) System.out.print(-1);
-        else System.out.printf("%d %d %d", fiveM, minute, ten);
+        else System.out.print(fiveM + " " + minute + " " + ten);
     }
 }
